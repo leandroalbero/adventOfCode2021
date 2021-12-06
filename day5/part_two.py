@@ -49,6 +49,7 @@ class Line:
         else:
             return False
 
+
 def load_data(filename):
     file = open(filename, 'r')
     lines = []
@@ -94,22 +95,17 @@ if __name__ == '__main__':
         ordered_line = line.leftmost_up()
         if line.is_horizontal():
             print("- [{},{}] -> [{},{}]".format(line.p1.x, line.p1.y, line.p2.x, line.p2.y))
-            for i in range(ordered_line[0].x, ordered_line[1].x+1):
+            for i in range(ordered_line[0].x, ordered_line[1].x + 1):
                 board[i][ordered_line[0].y] += 1
         elif line.is_vertical():
             print("| [{},{}] -> [{},{}]".format(line.p1.x, line.p1.y, line.p2.x, line.p2.y))
-            for i in range(ordered_line[0].y, ordered_line[1].y+1):
+            for i in range(ordered_line[0].y, ordered_line[1].y + 1):
                 board[ordered_line[0].x][i] += 1
         else:
             print("/ [{},{}] -> [{},{}]".format(line.p1.x, line.p1.y, line.p2.x, line.p2.y))
-            for i in range(ordered_line[0].x, ordered_line[1].x+1):
-                m = (ordered_line[1].y-ordered_line[0].y)/(ordered_line[1].x-ordered_line[0].x)
-                if m > 0:
-                    y = m*(i-ordered_line[0].x) + ordered_line[0].y
-                    board[i][int(y)] += 1
-                else:
-                    y = m * (i - ordered_line[0].x) + ordered_line[0].y
-                    board[i][int(y)] += 1
+            for i in range(ordered_line[0].x, ordered_line[1].x + 1):
+                m = (ordered_line[1].y - ordered_line[0].y) / (ordered_line[1].x - ordered_line[0].x)
+                y = m * (i - ordered_line[0].x) + ordered_line[0].y
+                board[i][int(y)] += 1
+
     print("Number of intersections: %i" % np.count_nonzero(board >= 2))
-
-
