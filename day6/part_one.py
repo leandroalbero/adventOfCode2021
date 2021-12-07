@@ -11,7 +11,6 @@ class Lanternfish:
             self.timer = 6
             fishes.append(Lanternfish(9))
 
-
 fishes = []
 
 if __name__ == '__main__':
