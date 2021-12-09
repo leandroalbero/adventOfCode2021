@@ -1,4 +1,4 @@
-#NON WORKING
+# NON WORKING
 
 def parse_input(filename):
     file = open(filename, 'r')
@@ -29,8 +29,8 @@ def infer_positions(input):
     number_eight = find_num(input[0], 7)
     number_nine = find_num(input[0], 6)
 
-    display[2] = number_one[0][0]
-    display[5] = number_one[0][1]
+    display[2] = number_one[0][1]
+    display[5] = number_one[0][0]
     display[0] = seven[0].replace(number_one[0][0], '').replace(number_one[0][1], '')
     # cfbegad - cbdgef
     number_eight = number_eight[0].replace(display[2], '').replace(display[5], '').replace(display[0], '')
@@ -42,8 +42,8 @@ def infer_positions(input):
             number_eight = temp
             break
     display[4] = number_eight
-    display[1] = number_four[0].replace(display[2], '').replace(display[5], '')[0]
-    display[3] = number_four[0].replace(display[2], '').replace(display[5], '')[1]
+    display[1] = number_four[0].replace(display[2], '').replace(display[5], '').replace(display[0], '').replace(display[4],'')[0]
+    display[3] = number_four[0].replace(display[2], '').replace(display[5], '').replace(display[0], '').replace(display[4],'').replace(display[1],'')
     number_eight = find_num(input[0], 7)[0]
     display[6] = number_eight.replace(display[0], '').replace(display[1], '').replace(display[2], '').replace(
         display[3], '').replace(display[4], '').replace(display[5], '')
@@ -85,3 +85,4 @@ if __name__ == '__main__':
             output_values.append(decode(positions, digit))
         print(output_values)
         # print(output_values.count(1)+output_values.count(4)+output_values.count(7)+output_values.count(8))
+    exit(0)
